@@ -47,9 +47,9 @@ class Accounts:
 
     def withdraw(self, amount: int):
         if amount % 200 != 0:
-            raise IncorrectWithdrawalAmount("Withdrawal amount should be in multiples of Rs. 200")
+            raise IncorrectWithdrawalAmount("Withdrawal amount should be multily of 200")
         if self.get_balance() < 200:
-            raise LowBalance("Balance too low")
+            raise LowBalance("Balance not sufficient")
 
         self.balance = self.get_balance() - amount
         self._update_record()
@@ -107,7 +107,7 @@ def other_menu():
             print("New pin set!!")
         elif isvalid and mention == 2:
             acc.block_card()
-            print("Hurray! Card blocked successfully!!")
+            print("Card blocked successfully!!")
 
 
 def withdrawal():
@@ -122,7 +122,7 @@ def withdrawal():
         acc = Accounts(acc_num)
         amt = int(input("Enter Amount for withdrawal:"))
         acc.withdraw(amt)
-        print(f"Record updated successfully!! Current balance {acc.get_balance()}")
+        print(f"updated successfully Current balance {acc.get_balance()}")
 
 
 try:
@@ -137,7 +137,7 @@ try:
         print("2. Savings")
         print("3. Current")
         print("4. other")
-        option = int(input("Please select transaction:\n"))
+        option = int(input("select transaction:\n"))
         if option > 4:
             raise ValueError
         elif option == 1:
@@ -150,10 +150,10 @@ except LowBalance as err:
 except InvalidCard:
     pass
 except ValueError:
-    print("Please enter correct option")
+    print("enter correct option")
 except Exception as err:
     print(err)
 finally:
-    print("Thank you!!")
+    print("Done")
 
 
